@@ -2,19 +2,22 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
 load_dotenv(BASE_DIR / '.env')
+
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
+
 allowed_hosts_string = os.environ.get('ALLOWED_HOSTS', '')
 ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_string.split(',') if host.strip()]
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'catalog',
-    #'accounts',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +64,7 @@ WSGI_APPLICATION = 'testsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
@@ -71,7 +75,6 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT', ''),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -121,5 +124,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
-    # ...
 }

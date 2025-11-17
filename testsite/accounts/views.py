@@ -27,7 +27,6 @@ class RegisterView(generics.CreateAPIView):
 
 
 class LoginView(APIView):
-    # Цей ендпоінт також має бути доступний анонімам
     permission_classes = [permissions.AllowAny]
 
     @method_decorator(ensure_csrf_cookie)
